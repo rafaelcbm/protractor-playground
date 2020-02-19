@@ -13,6 +13,6 @@ export class SigninPage {
   }
 
   pegarBotaoLogin() {
-    return element(by.buttonText('login'))
+    return element(by.buttonText('login'));
   }
 }
