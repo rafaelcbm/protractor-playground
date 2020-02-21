@@ -1,9 +1,11 @@
-import { SigninPage } from './pageObjects/signin.po';
-import { SignUpPage } from './pageObjects/signup.po';
+import { HomePage } from './pageObjects/home.po';
+import { SignupPage } from './pageObjects/signup.po';
 
-describe('Testando tela home', () => {
-  let signinPage: SigninPage;
-  let signupPage: SignUpPage;
+
+describe('na página de SignUp', () => {
+
+  let homePage: HomePage;
+  let signupPage: SignupPage;
 
   const seqUser = Math.floor(Math.random() * (1000 - 1)) + 1;
   const userName = `joao${seqUser}`;
@@ -14,9 +16,10 @@ describe('Testando tela home', () => {
     { nome: 'userName', valor: userName },
     { nome: 'password', valor: password }
   ];
+
   beforeEach(() => {
-    signinPage = new SigninPage();
-    signupPage = new SignUpPage();
+    homePage = new HomePage();
+    signupPage = new SignupPage();
   });
 
   it('Dever navegar para Signup', () => {
@@ -31,14 +34,14 @@ describe('Testando tela home', () => {
   });
 
 
-  it('Deve verificar url', () => {
-    expect(signinPage.verificarUrl()).toEqual('http://localhost:4200/#/home');
+  it('Deve verificar url da home', () => {
+    expect(homePage.verificarUrl()).toEqual('http://localhost:4200/#/home');
   });
 
   it('Deve fazer login', () => {
-    expect(signinPage.pegarInput('userName', userName));
-    expect(signinPage.pegarInput('password', password));
-    expect(signinPage.pegarBotaoLogin().click());
+    expect(homePage.passarParametroNoInput('userName', userName));
+    expect(homePage.passarParametroNoInput('password', password));
+    expect(homePage.pegarBotaoLogin().click());
   });
 
 });

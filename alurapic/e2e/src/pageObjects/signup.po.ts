@@ -1,8 +1,9 @@
 import { browser, by, element } from 'protractor';
 
-export class SignUpPage {
+export class SignupPage {
 
   navegarParaSignUp() {
+    browser.restart();
     return browser.get('/#/home/signup');
   }
 
@@ -12,5 +13,9 @@ export class SignUpPage {
 
   pegarBotaoRegister() {
     return element(by.buttonText('Register'));
+  }
+
+  obterUrl() {
+    return browser.getCurrentUrl();
   }
 }
