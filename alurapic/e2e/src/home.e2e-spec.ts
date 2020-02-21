@@ -4,11 +4,15 @@ import { SignUpPage } from './pageObjects/signup.po';
 describe('Testando tela home', () => {
   let signinPage: SigninPage;
   let signupPage: SignUpPage;
+
+  const seqUser = Math.floor(Math.random() * (1000 - 1)) + 1;
+  const userName = `joao${seqUser}`;
+  const password = 12345678;
   const informacoesDoUsuario = [
     { nome: 'email', valor: 'gustavo@alura.com' },
-    { nome: 'fullName', valor: 'Gustavo Oshiro' },
-    { nome: 'userName', valor: 'gustavoshiro' },
-    { nome: 'password', valor: '12345678' }
+    { nome: 'fullName', valor: `Joao da Silva${seqUser}` },
+    { nome: 'userName', valor: userName },
+    { nome: 'password', valor: password }
   ];
   beforeEach(() => {
     signinPage = new SigninPage();
@@ -32,8 +36,8 @@ describe('Testando tela home', () => {
   });
 
   it('Deve fazer login', () => {
-    expect(signinPage.pegarInput('userName', 'flavio'));
-    expect(signinPage.pegarInput('password', '123'));
+    expect(signinPage.pegarInput('userName', userName));
+    expect(signinPage.pegarInput('password', password));
     expect(signinPage.pegarBotaoLogin().click());
   });
 
